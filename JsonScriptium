@@ -1,0 +1,11 @@
+<?php
+namespace Devscriptyos\ScriptiumClass;
+
+class JsonScriptium
+{
+    public function __construct()
+    {
+
+    }
+}
+?>
