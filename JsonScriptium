@@ -3,9 +3,17 @@ namespace Devscriptyos\ScriptiumClass;
 
 class JsonScriptium
 {
-    public function __construct()
+    public $result;
+    
+    public function __construct($result)
     {
-
+        $this->result = $result;
+    }
+    
+    public function response()
+    {
+        header("Content-Type", "application/json");
+        return json_encode($this->result);
     }
 }
 ?>
