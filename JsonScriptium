@@ -1,19 +1,36 @@
 <?php
-namespace Devscriptyos\ScriptiumClass;
+namespace CustomNamespace\ResponseHandler;
 
-class JsonScriptium
+class JsonResponder
 {
-    public $result;
-    
-    public function __construct($result)
+    /**
+     * @param array $result The result data to be encoded as JSON.
+     */
+    public function __construct(private array $result) {}
+
+    /**
+     * Outputs the JSON response.
+     *
+     * @throws \JsonException if JSON encoding fails.
+     */
+    public function respond(): void
     {
-        $this->result = $result;
-    }
-    
-    public function response()
-    {
-        header("Content-Type", "application/json");
-        return json_encode($this->result);
+        header("Content-Type: application/json");
+        echo json_encode($this->result, JSON_THROW_ON_ERROR);
     }
 }
+
+// Example Usage
+use CustomNamespace\ResponseHandler\JsonResponder;
+
+$data = ['status' => 'success', 'message' => 'Data processed successfully.'];
+
+try {
+    $responder = new JsonResponder($data);
+    $responder->respond();
+} catch (\JsonException $e) {
+    // Handle JSON encoding errors
+    echo "Error encoding JSON: " . $e->getMessage();
+}
 ?>
+
