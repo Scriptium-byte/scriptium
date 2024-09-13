@@ -20,7 +20,7 @@ class JsonResponder
     }
 }
 
-// Example Usage
+// Example Usage beta
 use CustomNamespace\ResponseHandler\JsonResponder;
 
 $data = ['status' => 'success', 'message' => 'Data processed successfully.'];
